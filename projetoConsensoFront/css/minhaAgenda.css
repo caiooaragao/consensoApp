@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+
+/*  HEADER E NAC  */
+.header-geral {
+    background-color: #0057DF;
+}
+
+.logo a {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+#minhaAgenda {
+    height: 60px;
+    font-weight: 700 ;
+    line-height: 2;
+    
+    
+
+}
+
+#meusServicos{
+    color: #FFB800 !important;
+    border-bottom: 7px solid #FFB800;
+    color: white;
+    font-weight: 700 ;
+    line-height: 2;
+    
+}
+
+
+/*  MAIN   */
+
+main {
+    height: 70vh;
+}
+
+/* FORMULARIO */
+
+
+
+.agendamentos-container {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    background-color: #D9F8FF;
+    border: 1px solid #5A5A5A;
+    border-radius: 5px;
+    justify-content: space-between;
+
+}
+
+.main-container {
+    width: 27%;
+    min-width: 280px;
+}
+
+
+p {
+    margin: 0px !important;
+}
+
+.img-icon {
+    width: 14px;
+}
+
+
+/*   footer    */
+.img-footer {
+    width: 200px;
+}
+
+.opcao:hover {
+    color: rgb(174, 174, 174);
+}
+
+.footer-item {
+    background-color: #D9D9D9;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+
+}
+
+.texto-footer {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000000;
+}
+
+.div1 {
+    background-color: black;
+}
+
+.div2 {
+    background-color: red;
+}
