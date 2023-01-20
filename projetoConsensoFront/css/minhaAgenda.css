@@ -18,22 +18,23 @@
 
 }
 
-#minhaAgenda {
+#meusServicos {
     height: 60px;
-    font-weight: 700 ;
+    font-weight: 700;
     line-height: 2;
-    
-    
+    color: white;
+
+
 
 }
 
-#meusServicos{
+#minhaAgenda {
     color: #FFB800 !important;
     border-bottom: 7px solid #FFB800;
-    color: white;
-    font-weight: 700 ;
+
+    font-weight: 700;
     line-height: 2;
-    
+
 }
 
 
