@@ -18,23 +18,26 @@
 
 }
 
+.card-title {
+    font-weight: 300;
+}
 
 
 #agendar-servico {
     color: white;
-    font-weight: 700 ;
-    line-height: 2; 
+    font-weight: 700;
+    line-height: 2;
 
 }
-.meus-agendamentos-titulo{
-    font-weight: 400;
-}
+
+
+
 #meus-agendamentos {
-    color:#FFB800 !important;
+    color: #FFB800 !important;
     border-bottom: 7px solid #FFB800;
     height: 60px;
-    font-weight: 700 ;
-    line-height: 2;   
+    font-weight: 700;
+    line-height: 2;
 
 }
 
@@ -101,4 +104,3 @@ p {
     font-size: 16px;
     color: #000000;
 }
-

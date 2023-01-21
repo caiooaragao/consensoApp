@@ -20,20 +20,24 @@
 
 #minha-agenda {
     height: 60px;
-    font-weight: 700 ;
+    font-weight: 700;
     line-height: 2;
-    
-    
+
+
 
 }
 
-#meus-servicos{
+.card-title {
+    font-weight: 300;
+}
+
+#meus-servicos {
     color: #FFB800 !important;
     border-bottom: 7px solid #FFB800;
     color: white;
-    font-weight: 700 ;
+    font-weight: 700;
     line-height: 2;
-    
+
 }
 
 
@@ -84,6 +88,7 @@ main {
 .opcao:hover {
     color: rgb(174, 174, 174);
 }
+
 .footer-item {
     background-color: #D9D9D9;
     display: flex;
@@ -115,8 +120,9 @@ main {
     border-radius: 10px;
     color: white;
 }
-#novo-servico-nome{
-    font-weight: 700 ;
+
+#novo-servico-nome {
+    font-weight: 700;
 }
 
 .botao:hover {
