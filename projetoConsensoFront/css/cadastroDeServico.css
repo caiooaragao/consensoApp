@@ -18,7 +18,7 @@
 
 }
 
-#minhaAgenda {
+#minha-agenda {
     height: 60px;
     font-weight: 700 ;
     line-height: 2;
@@ -27,7 +27,7 @@
 
 }
 
-#meusServicos{
+#meus-servicos{
     color: #FFB800 !important;
     border-bottom: 7px solid #FFB800;
     color: white;
@@ -48,6 +48,15 @@ main {
 .formulario-box {
     max-width: 600px;
     min-width: 400px;
+}
+#nome-form{
+    font-size: 16px;
+    font-weight: 400;
+}
+#descricao-form{
+    font-size: 16px;
+    font-weight: 400;
+
 }
 
 .select-class {
@@ -70,6 +79,10 @@ main {
 }
 
 /* BOTAO */
+#cadastrar-nome{
+    
+    font-weight: 700 ;
+}
 
 .botao {
     padding: 5px;
@@ -121,10 +134,3 @@ main {
     color: #000000;
 }
 
-.div1 {
-    background-color: black;
-}
-
-.div2 {
-    background-color: red;
-}
