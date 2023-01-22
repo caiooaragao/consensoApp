@@ -23,12 +23,16 @@ public class UsuarioController {
 
     public ResponseEntity<Object> criarNovoUsuario(@RequestBody Usuario usuario) {
 
-        if (usuario.getTipoUsuario().getNome().equalsIgnoreCase("cliente")
-                || usuario.getTipoUsuario().getNome().equals("prestador")) {
-            usuarioService.save(usuario);
-            return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+        try {
+            if (usuario.getTipoUsuario().getNome().equalsIgnoreCase("cliente")
+                        || usuario.getTipoUsuario().getNome().equals("prestador")) {
+                    usuarioService.save(usuario);
+                    return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+                }
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(usuario.getTipoUsuario().getNome());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());//string 
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(usuario.getTipoUsuario().getNome());
 
     }
 

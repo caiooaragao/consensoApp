@@ -16,5 +16,6 @@ public class TipoUsuario {
     private Integer idTipoUsuario;
     @Column(unique = true)
     private String nome;
+   
 
 }
