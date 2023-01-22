@@ -19,7 +19,7 @@
 }
 
 #meus-agendamentos {
-    color: #FFB800;
+    color: #FFB800 !important;
     border-bottom: 7px solid #FFB800;
     font-weight: 700;
     line-height: 2;
@@ -47,31 +47,40 @@ main {
 
 /* FORMULARIO */
 
-#hora-form {
-    font-size: 16px;
-    font-weight: 400;
+
+#form-signin {
+
+    width: 30%;
+    min-width: 320px;
+    padding: 15px;
+
 
 }
 
-#data-form {
-    font-size: 16px;
-    font-weight: 400;
+.form-signin label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 1.1rem;
 }
 
-
-.formulario-box {
-    max-width: 600px;
-    min-width: 400px;
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
-.select-class {
-    width: 100%;
-    border-radius: 6px;
-    height: 40px;
-    border: 2px solid rgb(109, 109, 109);
-    margin-top: 2px;
-    margin-bottom: 2px;
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-radius: 0;
 }
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
 
 /* BOTAO */
 
