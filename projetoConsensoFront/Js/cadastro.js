@@ -1,4 +1,9 @@
+
+
+
 //referenciar os elementos html
+
+
 const form = document.getElementById("form-signin")
 const nome = document.getElementById("inputNome")
 const email = document.getElementById("inputEmail")
@@ -16,6 +21,7 @@ const divTipoUsuario = document.getElementById("div-Tipo-usuario")
 form.addEventListener("submit", (e) => {
     e.preventDefault()
     validarEntradas(nome, email, senha)
+   
 })
 
 
@@ -121,6 +127,7 @@ function validarEntradas(n, e, s) {
         }
     } else {
         window.alert("cadastro realizado com sucesso!")
+        sendDataToAPI(nome.value, email.value, senha.value, tipoUsuario.value)
     }
 
 }
@@ -129,3 +136,33 @@ function validarEmail(ev) {
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(ev)
 }
+
+
+
+function sendDataToAPI(nome, email, senha, tipoUsuario) {
+    // API endpoint URL
+    const url = 'http://localhost:8080/usuario';
+  
+    // Create a new FormData object to store the form data
+    const formData = new FormData();
+    formData.append('nome', nome);
+    formData.append('email', email);
+    formData.append('senha', senha);
+    formData.append('tipoUsuario', tipoUsuario);
+  
+    // Send a POST request to the API endpoint
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Do something with the response data
+        console.log(data);
+      })
+      .catch(error => {
+        // Handle any errors
+        console.error(error);
+      });
+  }
+  
