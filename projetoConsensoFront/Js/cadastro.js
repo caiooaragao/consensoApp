@@ -140,29 +140,18 @@ function validarEmail(ev) {
 
 
 function sendDataToAPI(nome, email, senha, tipoUsuario) {
-    // API endpoint URL
-    const url = 'http://localhost:8080/usuario';
-  
-    // Create a new FormData object to store the form data
-    const formData = new FormData();
-    formData.append('nome', nome);
-    formData.append('email', email);
-    formData.append('senha', senha);
-    formData.append('tipoUsuario', tipoUsuario);
-  
-    // Send a POST request to the API endpoint
-    fetch(url, {
-      method: 'POST',
-      body: formData
-    })
-      .then(response => response.json())
-      .then(data => {
-        // Do something with the response data
-        console.log(data);
-      })
-      .catch(error => {
-        // Handle any errors
-        console.error(error);
-      });
+    (async () => {
+        const rawResponse = await fetch('https://httpbin.org/post', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({nome: nome, email:email, senha:senha, tipoUsuario:tipoUsuario})
+        });
+        const content = await rawResponse.json();
+      
+        console.log(content);
+      })();
   }
   
