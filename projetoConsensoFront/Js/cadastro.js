@@ -21,6 +21,7 @@ const divTipoUsuario = document.getElementById("div-Tipo-usuario")
 form.addEventListener("submit", (e) => {
     e.preventDefault()
     validarEntradas(nome, email, senha)
+
    
 })
 
@@ -126,8 +127,9 @@ function validarEntradas(n, e, s) {
             
         }
     } else {
-        window.alert("cadastro realizado com sucesso!")
+        console.log(tipoUsuario.value)
         sendDataToAPI(nome.value, email.value, senha.value, tipoUsuario.value)
+        window.alert("cadastro realizado com sucesso!")
     }
 
 }
@@ -141,13 +143,15 @@ function validarEmail(ev) {
 
 function sendDataToAPI(nome, email, senha, tipoUsuario) {
     (async () => {
-        const rawResponse = await fetch('https://httpbin.org/post', {
+        const rawResponse = await fetch('http://localhost:8080/usuario', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({nome: nome, email:email, senha:senha, tipoUsuario:tipoUsuario})
+          body: JSON.stringify({nome: nome, email:email, senha:senha, tipoUsuario:{
+            idTipoUsuario:tipoUsuario
+          }})
         });
         const content = await rawResponse.json();
       
