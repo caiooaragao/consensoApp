@@ -86,6 +86,8 @@ function validarEntradas(l, s) {
             
         }
     } else {
+       
+        sendDataToAPI(login.value, Number(senha.value))
         window.alert("Login realizado com sucesso!")
     }
 
@@ -97,24 +99,25 @@ function validarEmail(ev) {
 }
 
 
-document.querySelector("#formId").addEventListener("submit", submitForm)
 
-function submitForm(e){
-    e.preventDefault();
-    let input1 = document.querySelector("#inputId1").value;
-    let input2 = document.querySelector("#inputId2").value;
-    let data = {input1:input1, input2:input2};
 
-    fetch("api endpoint url", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      //handle the response and update the UI
-    })
-   }
+function sendDataToAPI(email, senha) {
+   
+    (async () => {
+        const rawResponse = await fetch('http://localhost:8080/login', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email:email,
+            senha:senha
+          })
+        });
+        const content = await rawResponse;
+      
+        console.log(content);
+      })();
+  }
+  
