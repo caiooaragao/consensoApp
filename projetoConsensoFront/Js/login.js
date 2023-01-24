@@ -4,7 +4,6 @@ const login = document.getElementById("inputLogin")
 const senha = document.getElementById("inputSenha")
 
 
-
 const divLogin = document.getElementById("div-login")
 const divSenha = document.getElementById("div-senha")
 
@@ -116,6 +115,20 @@ function sendDataToAPI(email, senha) {
           })
         });
         const content = await rawResponse;
+
+        if(content.status == 202){
+           
+            
+            
+            function sendDataToFile2(email) {
+                let url = new URL('./visaoCliente/meusServicos.html');
+                url.searchParams.set("email", email);
+                console.log(url)
+                console.log(url.searchParams.set("email", email))
+               // window.location.href = url.href;
+            }
+        
+        }
       
         console.log(content);
       })();
