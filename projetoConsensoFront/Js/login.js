@@ -23,7 +23,7 @@ var verificadorSenha = 0
 
 
 document.getElementById("inputLogin").addEventListener("focus", function() {
-    this.value = "";
+
     login.classList.remove("is-invalid")
     divLogin.removeChild(itemLogin)
     verificadorLogin = 0
@@ -31,7 +31,7 @@ document.getElementById("inputLogin").addEventListener("focus", function() {
 });
 
 document.getElementById("inputSenha").addEventListener("focus", function() {
-    this.value = "";
+ 
     verificadorSenha = 0
     senha.classList.remove("is-invalid")
     divSenha.removeChild(itemSenha)
@@ -87,7 +87,7 @@ function validarEntradas(l, s) {
     } else {
        
         sendDataToAPI(login.value, Number(senha.value))
-        window.alert("Login realizado com sucesso!")
+    
     }
 
 }
@@ -116,21 +116,32 @@ function sendDataToAPI(email, senha) {
         });
         const content = await rawResponse;
 
-        if(content.status == 202){
-           
-            
-            
-            function sendDataToFile2(email) {
-                let url = new URL('./visaoCliente/meusServicos.html');
-                url.searchParams.set("email", email);
-                console.log(url)
-                console.log(url.searchParams.set("email", email))
-               // window.location.href = url.href;
+        if(rawResponse.status === 202){
+            const jsonResponse = await rawResponse.json();
+            var usuario = jsonResponse;
+            var idUsuario = usuario.idUsuario
+            var idTipoUsuario = usuario.tipoUsuario.idTipoUsuario
+            localStorage.setItem("idUsuario", idUsuario );
+            localStorage.setItem("idTipoUsuario", idTipoUsuario );
+
+            if(idTipoUsuario == 1){
+                window.location.href = './visaoCliente/agendarServico.html'; 
+            }else if(idTipoUsuario == 2){
+                window.location.href = './visaoPrestador/agendarServico.html';
+
             }
-        
+
+          
+            }
+        else{
+            
+            loginIncorreto = document.getElementById("login-incorreto").classList.remove("d-none")
+            
+            
+
         }
       
-        console.log(content);
+        
       })();
   }
   

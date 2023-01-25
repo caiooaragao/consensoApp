@@ -20,7 +20,7 @@ public class LoginController {
         try {
             Usuario verificacaoEmail = usuarioService.findByEmail(login.getEmail()).get();
             if (verificacaoEmail.getSenha().equals(login.getSenha())) {
-                return ResponseEntity.status(HttpStatus.ACCEPTED).body("Login Aceito!");
+                return ResponseEntity.status(HttpStatus.ACCEPTED).body(verificacaoEmail);
             } else {
                 return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Login errado!");
             }
