@@ -114,7 +114,7 @@ function sendDataToAPI(email, senha) {
             senha:senha
           })
         });
-        const content = await rawResponse;
+        
 
         if(rawResponse.status === 202){
             const jsonResponse = await rawResponse.json();
@@ -123,7 +123,7 @@ function sendDataToAPI(email, senha) {
             var idTipoUsuario = usuario.tipoUsuario.idTipoUsuario
             localStorage.setItem("idUsuario", idUsuario );
             localStorage.setItem("idTipoUsuario", idTipoUsuario );
-
+            console.log(usuario)
             if(idTipoUsuario == 1){
                 window.location.href = './visaoCliente/agendarServico.html'; 
             }else if(idTipoUsuario == 2){
