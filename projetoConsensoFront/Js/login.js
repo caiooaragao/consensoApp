@@ -86,7 +86,7 @@ function validarEntradas(l, s) {
         }
     } else {
        
-        sendDataToAPI(login.value, Number(senha.value))
+        sendDataToAPI(login.value, String(senha.value))
     
     }
 

@@ -1,7 +1,7 @@
 package consensoProjeto.consenso.model;
 
-import java.sql.Date;
 import java.time.LocalTime;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -24,7 +24,6 @@ public class Agendamento {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date data;
 
-    @FutureOrPresent
     private LocalTime hora;
 
     @OneToOne

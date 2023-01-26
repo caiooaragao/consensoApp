@@ -24,6 +24,9 @@ async function getAgendamentosPorId() {
     }
   }
 
+document.addEventListener("DOMContentLoaded", getAgendamentosPorId)
+
+
 
   async function getServicosDisponiveis() {
     try {
