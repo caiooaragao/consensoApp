@@ -57,6 +57,7 @@
     border-radius: 5px;
     justify-content: space-between;
 
+
 }
 
 .main-container {
@@ -83,14 +84,26 @@ p {
     color: rgb(174, 174, 174);
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+
+}
+
+main {
+    margin: 80px 0px 70px 0px;
+}
+
+
+
 .footer-item {
     background-color: #D9D9D9;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    position: absolute;
-    bottom: 0;
     width: 100%;
     padding: 10px;
 

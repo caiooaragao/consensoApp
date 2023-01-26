@@ -3,6 +3,9 @@ package consensoProjeto.consenso.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import consensoProjeto.consenso.model.Agendamento;
 import consensoProjeto.consenso.service.AgendamentoService;
 
+@CrossOrigin
 @RestController
 public class AgendamentoController {
 
@@ -38,10 +42,10 @@ public class AgendamentoController {
     }
 
     @DeleteMapping("/agendamento/{id}")
-    public String deletarAgendamentoPeloId(@PathVariable("id") Integer id) {
+    public ResponseEntity<String> deletarAgendamentoPeloId(@PathVariable("id") Integer id) {
         agendamentoService.deleteById(id);
 
-        return "Agendamento deletado com sucesso!";
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("agendamento deletado");
     }
 
     @PutMapping("/agendamento")

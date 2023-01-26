@@ -29,7 +29,7 @@ async function getAgendamentosPorId() {
           for (let index = 0; index < data.length; index++) {
             const element = data[index];
             
-            agendamentoPai.innerHTML += `<div class="agendamentos-container">
+            agendamentoPai.innerHTML += `<div id="${element.idAgendamento}" class="agendamentos-container">
           <div>
             <p><strong>${element.servico?.nome}</strong></p>
             <p><Strong>Prestador: </Strong>${element.servico?.usuarioPrestador.nome}</p>
@@ -37,9 +37,9 @@ async function getAgendamentosPorId() {
             <p><Strong>Horário: </Strong>: ${element.hora[0]}:${element.hora[1]}h</p>
           </div>
           <div>
-            <a href="../visaoCliente/editarAgendamento.html?id=${element.id}"><img class="img-icon" src="../img/caneta.svg"
+            <a href="../visaoCliente/editarAgendamento.html?id=${element.idAgendamento}"><img class="img-icon" src="../img/caneta.svg"
                 alt=""></a>
-                <a onclick="deletarServico(this)" href="#"><img class="img-icon" id="lixo-icon" src="../img/lixo.svg" alt=""></a>
+                <a onclick="deletarAgendamento(${element.idAgendamento})" href="#"><img class="img-icon" id="lixo-icon" src="../img/lixo.svg" alt=""></a>
 
           </div>
         </div>`
@@ -55,11 +55,30 @@ async function getAgendamentosPorId() {
   }
 
 
-  function deletarServico(el) {
-    el.parentElement.parentElement.remove();
-  }
   
-
+  
+  async function deletarAgendamento(el) {
+    console.log(el)
+    try {
+        const rawResponse = await fetch(`http://localhost:8080/agendamento/${el}`, {
+          method: 'DELETE',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        });
+        
+        if( rawResponse.status == 202){
+          let divPai = document.getElementById(el)
+          divPai.remove()
+          window.alert("agendamento deletado!")
+        }
+        
+    } catch (error) {
+        console.error(error);
+    }
+    
+  } 
 
   async function getServicosDisponiveis() {
     try {
