@@ -1,0 +1,14 @@
+INSERT INTO usuarios (idUsuario, nome, email, senha, idTipoUsuario)
+VALUES (6, 'John', 'john@example.com', 'password123', 1);
+
+INSERT INTO usuarios (idUsuario, nome, email, senha, idTipoUsuario)
+VALUES (7, 'Jane', 'jane@example.com', 'password456', 2);
+
+INSERT INTO usuarios (idUsuario, nome, email, senha, idTipoUsuario)
+VALUES (8, 'Bob', 'bob@example.com', 'password789', 1);
+
+INSERT INTO tipo_usuario (idTipoUsuario, nome)
+VALUES (1, 'cliente');
+
+INSERT INTO tipo_usuario (idTipoUsuario, nome)
+VALUES (2, 'prestador');
