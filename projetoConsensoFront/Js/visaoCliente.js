@@ -56,7 +56,7 @@ async function getAgendamentosPorId() {
 
 
   function deletarServico(el) {
-    el.parentElement.parentElement.parentElement.remove();
+    el.parentElement.parentElement.remove();
   }
   
 

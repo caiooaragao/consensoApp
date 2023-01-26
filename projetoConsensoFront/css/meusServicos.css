@@ -44,9 +44,7 @@
 
 /*  MAIN   */
 
-main {
-    height: 70vh;
-}
+
 
 /* FORMULARIO */
 
@@ -91,7 +89,7 @@ p {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     padding: 10px;
