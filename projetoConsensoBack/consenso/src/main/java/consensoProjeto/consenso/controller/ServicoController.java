@@ -28,7 +28,7 @@ public class ServicoController {
             return ResponseEntity.status(HttpStatus.CREATED).body(savedServico);
         } catch (DataAccessException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao criar novo serviço");
-        }//corrigido
+        } // corrigido
 
     }
 
@@ -38,7 +38,7 @@ public class ServicoController {
             List<Servico> servicos = servicoService.findAll();
             return ResponseEntity.ok(servicos.toString());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR) 
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Erro ao obter lista de servicos");
         }
     }
@@ -47,9 +47,9 @@ public class ServicoController {
     public Servico obterServicosPeloId(@PathVariable("id") Integer id) {
         try {
             return servicoService.findById(id).get();
-            } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Servico não encontrado.", e);
-            }
+        }
     }
 
     @DeleteMapping("/servico/{id}")
@@ -75,4 +75,3 @@ public class ServicoController {
     private ServicoService servicoService;
 
 }
-
