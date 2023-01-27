@@ -18,21 +18,17 @@ import org.springframework.web.server.ResponseStatusException;
 
 import consensoProjeto.consenso.model.Servico;
 import consensoProjeto.consenso.service.ServicoService;
-import consensoProjeto.consenso.model.TipoUsuario;
 
 @RestController
 public class ServicoController {
     @PostMapping("/servico")
     public ResponseEntity<Object> criarNovoServico(@RequestBody Servico servico) {
         try {
-            if (((TipoUsuario) servico.getTipoUsuario()).getIdTipoUsuario() == 1
-                    || ((TipoUsuario) servico.getTipoUsuario()).getIdTipoUsuario() == 2) {
-                servicoService.save(servico);
-            }
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(((Servico) servico.getTipoUsuario()).getNome());
+            Servico savedServico = servicoService.save(servico);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedServico);
         } catch (DataAccessException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao criar novo serviço");
-        }
+        }//corrigido
 
     }
 
