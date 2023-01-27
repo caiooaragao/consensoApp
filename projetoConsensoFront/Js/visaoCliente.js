@@ -12,6 +12,7 @@ form.addEventListener("submit", (e) => {
 
 // PAGINA DE LISTAR OS AGENDAMENTOS (MEUS SERVICOS)
 
+/*
 async function getAgendamentosPorId() {
     try {
         const rawResponse = await fetch(`http://localhost:8080/agendamento/usuario/${idUsuario}`, {
@@ -79,6 +80,7 @@ async function getAgendamentosPorId() {
     }
     
   } 
+  */
 
   async function getServicosDisponiveis() {
     try {

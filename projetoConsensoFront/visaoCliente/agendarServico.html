@@ -47,10 +47,8 @@
                   <label for="Servico">Selecione o serviço:</label>
                 </div>
                 <div class="col-12">
-                  <select class="select-class" name="teste" id="">
+                  <select class="select-class" name="selecionar-servico" id="selecionar-servico">
                     <option value=""></option>
-                    <option value="">teste</option>
-                    <option value="">teste</option>
                   </select>
                 </div>
               </div>
@@ -66,23 +64,15 @@
           </div>
           <div class="row">
             <div class="col-8">
-              <select class="select-class" name="teste" id="">
-                <option value=""></option>
-                <option value="">teste</option>
-                <option value="">teste</option>
-              </select>
+              <input type="date" id="data" name="data" class="select-class text-center">
             </div>
             <div class="col-4">
-              <select class="select-class" name="teste" id="">
-                <option value=""></option>
-                <option value="">teste</option>
-                <option value="">teste</option>
-              </select>
+              <input type="time" class="select-class text-center " name="hora" id="hora">
             </div>
           </div>
           <div class="row">
             <div class="col-12">
-              <button id="agendar-nome" class="botao mt-5">AGENDAR</button>
+              <button id="agendar-nome" onclick="agendarServico()" class="botao mt-5">AGENDAR</button>
             </div>
           </div>
         </div>
@@ -105,7 +95,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-  <script src="../Js/visaoCliente.js"></script>
+  <script src="../Js/agendarServico.js"></script>
 </body>
 
 </html>
