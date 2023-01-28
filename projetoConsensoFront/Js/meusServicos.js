@@ -39,9 +39,9 @@ async function getAgendamentosPorId() {
                   agendamentoPai.innerHTML += `<div id="${element.idAgendamento}" class="agendamentos-container">
                 <div>
                   <p><strong>${element.servico?.nome}</strong></p>
-                  <p><Strong>Prestador: </Strong>${element.servico?.usuarioPrestador.nome}</p>
+                  <p><Strong>Prestador: </Strong>${element.servico?.usuarioPrestador?.nome}</p>
                   <p><Strong>Dia: </Strong>${element.data}</p>
-                  <p><Strong>Horário: </Strong>: ${element.hora[0]}:${element.hora[1]}h</p>
+                  <p><Strong>Horário: </Strong>: ${element?.hora[0]}:${element?.hora[1]}h</p>
                 </div>
                 <div>
                   <a href="../visaoCliente/editarAgendamento.html?id=${element.idAgendamento}"><img class="img-icon" src="../img/caneta.svg"
