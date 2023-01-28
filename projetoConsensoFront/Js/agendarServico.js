@@ -19,7 +19,7 @@ botao.addEventListener("click", function(){
   
   
     var date = new Date(data);
-    var formattedDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    var formattedDate = (date.getDate()+2) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     
     sendDataToAPI(formattedDate, hora, idUsuario, selectedValue)
 })

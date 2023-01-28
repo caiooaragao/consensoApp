@@ -47,10 +47,8 @@
                   <label for="Servico">Selecione o serviço:</label>
                 </div>
                 <div class="col-12">
-                  <select class="select-class" name="teste" id="">
-                    <option value="">Instalação</option>
-                    <option value="">teste</option>
-                    <option value="">teste</option>
+                  <select class="select-class" id="selecionar-servico" name="teste" id="">
+                    <option value=""></option>
                   </select>
                 </div>
               </div>
@@ -66,18 +64,16 @@
           </div>
           <div class="row">
             <div class="col-8">
-              <select class="select-class text-center" name="teste" id="">
-                <option value="">04/01/2023</option>
-                <option value="">teste</option>
-                <option value="">teste</option>
-              </select>
+              <input type="date" class="select-class text-center" name="teste" id="data">
+
+              </input>
+              <p class="text-danger d-none" id="data-invalida">Data inválida</p>
             </div>
             <div class="col-4">
-              <select class="select-class" name="teste" id="">
-                <option value="">13:00</option>
-                <option value="">teste</option>
-                <option value="">teste</option>
-              </select>
+              <input type="time" class="select-class text-center" name="teste" id="hora">
+
+              </input>
+              <p class="text-danger d-none" id="hora-invalida">Hora inválida</p>
             </div>
           </div>
           <div class="row">
@@ -106,7 +102,7 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
-  <script src="../Js/visaoCliente.js"></script>
+  <script src="../Js/editarAgendamento.js"></script>
 </body>
 
 </html>
