@@ -32,7 +32,7 @@ var verificadorSenha = 0
 
 
 document.getElementById("inputNome").addEventListener("focus", function() {
-    this.value = "";
+   
     nome.classList.remove("is-invalid")
     divNome.removeChild(itemNome)
     verificadorNome = 0
@@ -40,14 +40,14 @@ document.getElementById("inputNome").addEventListener("focus", function() {
 });
 
 document.getElementById("inputEmail").addEventListener("focus", function() {
-    this.value = "";
+   
     verificadorEmail = 0
     email.classList.remove("is-invalid")
     divEmail.removeChild(itemEmail)
 });
 
 document.getElementById("inputSenha").addEventListener("focus", function() {
-    this.value = "";
+    
     verificadorSenha = 0
     senha.classList.remove("is-invalid")
     divSenha.removeChild(itemSenha)
@@ -154,6 +154,12 @@ function sendDataToAPI(nome, email, senha, tipoUsuario) {
           }})
         });
         const content = await rawResponse.json();
+        if (rawResponse.status == 201){
+            
+            window.location.href = './login.html'; 
+            
+
+        }
       
         console.log(content);
       })();

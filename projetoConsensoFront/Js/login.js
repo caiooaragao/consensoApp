@@ -127,7 +127,7 @@ function sendDataToAPI(email, senha) {
             if(idTipoUsuario == 1){
                 window.location.href = './visaoCliente/agendarServico.html'; 
             }else if(idTipoUsuario == 2){
-                window.location.href = './visaoPrestador/agendarServico.html';
+                window.location.href = './visaoPrestador/meusServicosPrestador.html';
 
             }
 

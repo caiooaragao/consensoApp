@@ -53,6 +53,11 @@ public class ServicoController {
         }
     }
 
+    @GetMapping("/servico/usuario/{id}")
+    public List<Servico> listadeServicosPorID(@PathVariable Integer id) {
+        return servicoService.findServicoByusuarioIdUsuario(id);
+    }
+
     @DeleteMapping("/servico/{id}")
     public String deletarContatoPeloId(@PathVariable("id") Integer id) {
         servicoService.deleteById(id);

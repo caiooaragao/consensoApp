@@ -36,7 +36,7 @@ botao.addEventListener("click", function(event){
 
 
       sendDataToAPI(idAgendamentoAgora, formattedDate, hora, idUsuario, selectedValue)
-      event.preventDefault();
+      
       
 
     }
