@@ -11,17 +11,29 @@ var selectedValue
 var nomeServico
 
 let botao = document.getElementById("agendar-nome")
-botao.addEventListener("click", function(){
-    let data = document.getElementById("data").value
-    let hora = document.getElementById("hora").value
-    console.log(data)
-    console.log(hora)
-  
-  
+botao.addEventListener("click", function(event){
+  let data = document.getElementById("data").value
+  let hora = document.getElementById("hora").value
+  console.log(data)
+  console.log(hora)
+  let verificacaoData = document.getElementById("data-invalida")
+  let verificacaoHora = document.getElementById("hora-invalida")
+  var selectedDate = new Date(data);
+  var currentDate = new Date();
+  if(hora == undefined || hora == "" ){
+    verificacaoHora.classList.remove("d-none")
+    event.preventDefault();
+  }
+  if(data == undefined || data == "" || selectedDate.getTime() < currentDate.getTime()){
+    verificacaoData.classList.remove("d-none")
+    event.preventDefault();
+  }
+  else{
     var date = new Date(data);
-    var formattedDate = (date.getDate()+2) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-    
+    var formattedDate = (date.getDate()+1)+ "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     sendDataToAPI(formattedDate, hora, idUsuario, selectedValue)
+  }
+    
 })
 
 

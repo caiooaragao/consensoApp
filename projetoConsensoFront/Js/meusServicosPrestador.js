@@ -24,8 +24,9 @@ async function getServicosPorId() {
     
         if(rawResponse.status == 200){
             if (data.length == 0){
-                document.getElementById("nenhum-servico").classList.remove("d-none")
-                let text = document.getElementById("titulo-servico")
+                let popup = document.getElementById("nenhum-agendamento")
+                popup.classList.remove("d-none")
+                let text = document.getElementById("titulo-agendamento")
                 text.classList.add("d-none")
 
             
