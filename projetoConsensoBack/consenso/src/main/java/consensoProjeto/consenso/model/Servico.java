@@ -12,7 +12,7 @@ import lombok.Data;
 public class Servico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idServico;
+    private Integer idServico;
     private String nome;
     private String descricao;
 
