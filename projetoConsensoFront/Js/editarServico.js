@@ -14,34 +14,17 @@ var idAgendamentoAgora
 let botao = document.getElementById("cadastro-servico")
 
 botao.addEventListener("click", function(event){
-    let data = document.getElementById("data").value
-    let hora = document.getElementById("hora").value
-    console.log(data)
-    console.log(hora)
-    let verificacaoData = document.getElementById("data-invalida")
-    let verificacaoHora = document.getElementById("hora-invalida")
-    var selectedDate = new Date(data);
-    var currentDate = new Date();
-    if(hora == undefined || hora == "" ){
-      verificacaoHora.classList.remove("d-none")
-      event.preventDefault();
-    }
-    if(data == undefined || data == "" || selectedDate.getTime() < currentDate.getTime()){
-      verificacaoData.classList.remove("d-none")
-      event.preventDefault();
-    }
-    else{
-      var date = new Date(data);
-      var formattedDate = (date.getDate()+2)+ "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-
-
-      sendDataToAPI(idAgendamentoAgora, formattedDate, hora, idUsuario, selectedValue)
+   
+    let nomeServico = document.getElementById("nome").value
+    let descricaoServico = document.getElementById("descricao").value
+  
+    sendDataToAPI(selectedValue, nomeServico, descricaoServico)
       
-      
+   event.preventDefault()
 
-    }
+    })
 
-})
+
 
 
 
@@ -68,21 +51,23 @@ select.addEventListener("change", function(){
 
 
 
-async function sendDataToAPI(idAgendamentoAgora ,formattedDate, hora, idUsuario,selectedValue) {
+async function sendDataToAPI(selectedValue ,nomeServico, descricaoServico) {
 
 
   try {
-      const rawResponse = await fetch('http://localhost:8080/agendamento', {
+      const rawResponse = await fetch('http://localhost:8080/servico', {
         method: 'PUT',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({idAgendamento:idAgendamentoAgora ,data:formattedDate, hora:hora, usuario:{idUsuario:idUsuario}, servico:{idServico:selectedValue} })
+        body: JSON.stringify({idServico:selectedValue, nome: nomeServico, descricaoServico:descricaoServico })
       });
+      console.log(rawResponse.status)
       const content = await rawResponse.json();
-      if(rawResponse.status == 202){
-        window.alert("agendamento editado com sucesso!")
+      if(rawResponse.status == 200){
+        window.alert("servico editado com sucesso!")
+        window.location.reload()
       }
 
       console.log(content);

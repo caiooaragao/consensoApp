@@ -44,9 +44,18 @@
 
 /*  MAIN   */
 
-main {
-    height: 70vh;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+
 }
+
+main {
+    margin: 80px 0px 70px 0px;
+}
+
 
 /* FORMULARIO */
 
@@ -95,11 +104,8 @@ p {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     padding: 10px;
-
 }
 
 .texto-footer {
