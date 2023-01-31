@@ -32,7 +32,7 @@ botao.addEventListener("click", function(event){
     }
     else{
       var date = new Date(data);
-      var formattedDate = (date.getDate()+2)+ "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+      var formattedDate = (date.getDate()+1)+ "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 
 
       sendDataToAPI(idAgendamentoAgora, formattedDate, hora, idUsuario, selectedValue)

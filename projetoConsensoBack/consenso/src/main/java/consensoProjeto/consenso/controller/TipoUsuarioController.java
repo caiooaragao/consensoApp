@@ -1,4 +1,5 @@
 package consensoProjeto.consenso.controller;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +19,25 @@ import consensoProjeto.consenso.service.TipoUsuarioService;
 @RestController
 public class TipoUsuarioController {
     @PostMapping("/tipousuario")
-    
-    public ResponseEntity<Object> criarNovoUsuario(@RequestBody TipoUsuario TipoUsuario){
+
+    public ResponseEntity<Object> criarNovoUsuario(@RequestBody TipoUsuario TipoUsuario) {
         try {
             if (TipoUsuario.getNome().equalsIgnoreCase("cliente")
-                        || TipoUsuario.getNome().equals("prestador")) {
-                    tipoUsuarioService.save(TipoUsuario);
-                    return ResponseEntity.status(HttpStatus.CREATED).body(TipoUsuario);
-                }
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(TipoUsuario.getNome());
+                    || TipoUsuario.getNome().equals("prestador")) {
+                tipoUsuarioService.save(TipoUsuario);
+                return ResponseEntity.status(HttpStatus.CREATED).body(TipoUsuario);
+            }
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(TipoUsuario.getNome());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());//string 
-        }}
- 
-    @GetMapping("/tipousuario")
-    public List<TipoUsuario> obterTodosTipoUsuarios(){
-     return tipoUsuarioService.findAll();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());// string
+        }
     }
+
+    @GetMapping("/tipousuario")
+    public List<TipoUsuario> obterTodosTipoUsuarios() {
+        return tipoUsuarioService.findAll();
+    }
+
     @GetMapping("/tipousuario/{id}")
     public ResponseEntity<Object> obterUsuarioPeloId(@PathVariable("id") Integer id) {
         try {
@@ -43,27 +46,24 @@ public class TipoUsuarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro.getMessage());
         }
     }
-    
+
     @DeleteMapping("/tipousuario/{id}")
-    public String deletarUsuarioPeloId(@PathVariable("id") Integer id) {
+    public ResponseEntity<Object> deletarUsuarioPeloId(@PathVariable("id") Integer id) {
         tipoUsuarioService.deleteById(id);
-
-        return "TipoUsuario deletado com sucesso!";
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
-    @PutMapping("/tipousuario")
-    public TipoUsuario atualizarTipoUsuario(@RequestBody TipoUsuario tipoUsuario) {
-        TipoUsuario tipoUsuarioBD = tipoUsuarioService.findById(tipoUsuario.getIdTipoUsuario()).get();
-        
+    @PutMapping("/tipousuario/{id}")
+    public ResponseEntity<TipoUsuario> atualizarTipoUsuario(@PathVariable Integer id,
+            @RequestBody TipoUsuario tipoUsuario) {
+        return tipoUsuarioService.findByIdTipoUsuario(id).map(record -> {
+            record.setNome(tipoUsuario.getNome());
+            TipoUsuario updated = tipoUsuarioService.save(record);
+            return ResponseEntity.ok().body(updated);
+        }).orElse(ResponseEntity.notFound().build());
 
-        tipoUsuarioBD.setNome(tipoUsuario.getNome());
-        tipoUsuarioBD.setIdTipoUsuario(tipoUsuario.getIdTipoUsuario());
-        
-
-        tipoUsuarioBD = tipoUsuarioService.save(tipoUsuario);
-
-        return tipoUsuarioBD;
     }
+
     @Autowired
     private TipoUsuarioService tipoUsuarioService;
 }

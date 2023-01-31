@@ -3,6 +3,7 @@ package consensoProjeto.consenso.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,8 +23,13 @@ import consensoProjeto.consenso.service.AgendamentoService;
 public class AgendamentoController {
 
     @PostMapping("/agendamento")
-    public Agendamento criarNovoAgendamento(@RequestBody Agendamento agendamento) {
-        return agendamentoService.save(agendamento);
+    public ResponseEntity<Object> criarNovoAgendamento(@RequestBody Agendamento agendamento) {
+        try {
+            Agendamento savedAgendamento = agendamentoService.save(agendamento);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedAgendamento);
+        } catch (DataAccessException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao criar novo Agendamento");
+        }
     }
 
     @GetMapping("/agendamento")
@@ -43,9 +49,12 @@ public class AgendamentoController {
 
     @DeleteMapping("/agendamento/{id}")
     public ResponseEntity<String> deletarAgendamentoPeloId(@PathVariable("id") Integer id) {
-        agendamentoService.deleteById(id);
-
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body("agendamento deletado");
+        try {
+            agendamentoService.deleteById(id);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PutMapping("/agendamento")

@@ -21,7 +21,7 @@ const divTipoUsuario = document.getElementById("div-Tipo-usuario")
 form.addEventListener("submit", (e) => {
     e.preventDefault()
     validarEntradas(nome, email, senha)
-
+    
    
 })
 
@@ -129,7 +129,7 @@ function validarEntradas(n, e, s) {
     } else {
         console.log(tipoUsuario.value)
         sendDataToAPI(nome.value, email.value, senha.value, tipoUsuario.value)
-        window.alert("cadastro realizado com sucesso!")
+        
     }
 
 }
@@ -153,12 +153,17 @@ function sendDataToAPI(nome, email, senha, tipoUsuario) {
             idTipoUsuario:tipoUsuario
           }})
         });
+        console.log(rawResponse.status)
         const content = await rawResponse.json();
         if (rawResponse.status == 201){
             
             window.location.href = './login.html'; 
-            
+            window.alert("cadastro realizado com sucesso!")
 
+        }
+        else{
+            window.alert("credenciais inválidas")
+            window.location.reload()
         }
       
         console.log(content);

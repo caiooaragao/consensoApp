@@ -22,7 +22,7 @@ async function getServicosPorId() {
         const data = await rawResponse.json();
         console.log(data)
     
-        if(rawResponse.status == 200){
+        if(rawResponse.status == 202){
             if (data.length == 0){
                 let popup = document.getElementById("nenhum-agendamento")
                 popup.classList.remove("d-none")
@@ -80,7 +80,7 @@ async function getServicosPorId() {
         let testtest = String(el)
         cleanId = testtest.trim()
         console.log(cleanId)
-        if( rawResponse.status == 200){
+        if( rawResponse.status == 202){
         const divpai = document.getElementById(cleanId)
         console.log(divpai)
           console.log(el)   

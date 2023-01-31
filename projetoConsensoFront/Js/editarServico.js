@@ -55,22 +55,20 @@ async function sendDataToAPI(selectedValue ,nomeServico, descricaoServico) {
 
 
   try {
-      const rawResponse = await fetch('http://localhost:8080/servico', {
+      const rawResponse = await fetch( `http://localhost:8080/servico/${selectedValue}`, {
         method: 'PUT',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({idServico:selectedValue, nome: nomeServico, descricaoServico:descricaoServico })
+        body: JSON.stringify({nome:nomeServico, descricaoServico:descricaoServico })
       });
       console.log(rawResponse.status)
-      const content = await rawResponse.json();
-      if(rawResponse.status == 200){
+      if(rawResponse.status == 202){
         window.alert("servico editado com sucesso!")
         window.location.reload()
       }
 
-      console.log(content);
     }catch (error) {
       console.error(error);
 }}

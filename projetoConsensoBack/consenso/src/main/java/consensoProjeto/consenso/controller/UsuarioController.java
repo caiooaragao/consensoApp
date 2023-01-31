@@ -54,27 +54,26 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/usuario/{id}")
-    public String deletarUsuarioPeloId(@PathVariable("id") Integer id) {
-        usuarioService.deleteById(id);
+    public ResponseEntity<Object> deletarUsuario(@PathVariable("id") Integer id) {
+        try {
+            usuarioService.deleteById(id);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 
-        return "Usuario deletado com sucesso!";
+        }
     }
 
-    @PutMapping("/usuario")
-    public Usuario atualizarContato(@RequestBody Usuario usuario) {
-        Usuario usuarioBD = usuarioService.findById(usuario.getIdUsuario()).get();
-
-        usuarioBD.setNome(usuario.getNome());
-        usuarioBD.setSobrenome(usuario.getSobrenome());
-
-        usuarioBD.setEmail(usuario.getEmail());
-
-        usuarioBD.setSenha(usuario.getSenha());
-        usuarioBD.setTipoUsuario(usuario.getTipoUsuario());
-
-        usuarioBD = usuarioService.save(usuario);
-
-        return usuarioBD;
+    @PutMapping("/usuario/{id}")
+    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable("id") Integer id, @RequestBody Usuario usuario) {
+        return usuarioService.findByIdUsuario(id).map(record -> {
+            record.setNome(usuario.getNome());
+            record.setSobrenome(usuario.getSobrenome());
+            record.setSenha(usuario.getSenha());
+            record.setEmail(usuario.getEmail());
+            Usuario updated = usuarioService.save(record);
+            return ResponseEntity.ok().body(updated);
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @Autowired

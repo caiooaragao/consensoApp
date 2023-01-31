@@ -32,6 +32,7 @@ botao.addEventListener("click", function(event){
     var date = new Date(data);
     var formattedDate = (date.getDate()+1)+ "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     sendDataToAPI(formattedDate, hora, idUsuario, selectedValue)
+    event.preventDefault()
   }
     
 })
@@ -58,8 +59,9 @@ async function sendDataToAPI(data, hora, idUsuario,selectedValue) {
         body: JSON.stringify({data:data, hora:hora, usuario:{idUsuario:idUsuario}, servico:{idServico:selectedValue} })
       });
       const content = await rawResponse.json();
-      if(rawResponse.status == 200){
+      if(rawResponse.status == 201){
         window.alert("agendamento criado com sucesso!")
+        window.location.reload()
       }
     
       console.log(content);

@@ -54,27 +54,37 @@ public class ServicoController {
     }
 
     @GetMapping("/servico/usuario/{id}")
-    public List<Servico> listadeServicosPorID(@PathVariable Integer id) {
-        return servicoService.findServicoByusuarioPrestadorIdUsuario(id);
+    public ResponseEntity<List<Servico>> listadeServicosPorID(@PathVariable Integer id) {
+        try {
+            List<Servico> testeServicoDB = servicoService.findServicoByusuarioPrestadorIdUsuario(id);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(testeServicoDB);
+        } catch (Exception e) {
+            // TODO: handle exception
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
     }
 
     @DeleteMapping("/servico/{id}")
-    public String deletarContatoPeloId(@PathVariable("id") Integer id) {
-        servicoService.deleteById(id);
-
-        return "Servico deletado com sucesso!";
+    public ResponseEntity<Object> deletarServicoPeloId(@PathVariable("id") Integer id) {
+        try {
+            servicoService.deleteById(id);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    @PutMapping("/servico")
-    public Servico atualizarServico(@RequestBody Servico servico) {
-        Servico servicoBD = servicoService.findById(servico.getIdServico()).get();
+    @CrossOrigin
+    @PutMapping("/servico/{id}")
+    public ResponseEntity<Object> atualizarServico(@PathVariable Integer id, @RequestBody Servico servico) {
 
-        servicoBD.setNome(servico.getNome());
-        servicoBD.setDescricao(servico.getDescricao());
-
-        servicoBD = servicoService.save(servicoBD);
-
-        return servicoBD;
+        return servicoService.findByIdServico(id).map(record -> {
+            record.setNome(servico.getNome());
+            record.setDescricao(servico.getDescricao());
+            servicoService.save(record);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @Autowired

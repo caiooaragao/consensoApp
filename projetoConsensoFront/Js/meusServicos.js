@@ -21,6 +21,7 @@ async function getAgendamentosPorId() {
         });
         const data = await rawResponse.json();
         console.log(data)
+        console.log(rawResponse.status)
         if(rawResponse.status == 200){
             if (data.length == 0){
                 document.getElementById("nenhum-agendamento").classList.remove("d-none")
@@ -41,7 +42,7 @@ async function getAgendamentosPorId() {
                   <p><strong>${element.servico?.nome}</strong></p>
                   <p><Strong>Prestador: </Strong>${element.servico?.usuarioPrestador?.nome}</p>
                   <p><Strong>Dia: </Strong>${element.data}</p>
-                  <p><Strong>Horário: </Strong>: ${element?.hora[0]}:${element?.hora[1]}h</p>
+                  <p><Strong>Horário: </Strong> ${element?.hora[0]}:${element?.hora[1]}h</p>
                 </div>
                 <div>
                   <a href="../visaoCliente/editarAgendamento.html?id=${element.idAgendamento}"><img class="img-icon" src="../img/caneta.svg"
