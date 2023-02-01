@@ -87,7 +87,7 @@ async function getServicosDisponiveis() {
         dataStorage = await rawResponse.json();
         console.log(dataStorage);
 
-        if(rawResponse.status == 200){
+        if(rawResponse.status == 202){
             selecionarServico = document.getElementById("selecionar-servico")
 
                 for (let index = 0; index < dataStorage.length; index++) {
