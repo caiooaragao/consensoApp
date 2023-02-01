@@ -43,8 +43,10 @@ public class AgendamentoController {
     }
 
     @GetMapping("/agendamento/{id}")
-    public Agendamento obterAgendamentoPeloId(@PathVariable("id") Integer id) {
-        return agendamentoService.findById(id).get();
+    public ResponseEntity<Agendamento> agendamentoUnico(@PathVariable("id") Integer id) {
+
+        return agendamentoService.findById(id).map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/agendamento/{id}")
@@ -58,15 +60,18 @@ public class AgendamentoController {
     }
 
     @PutMapping("/agendamento")
-    public Agendamento atualizarAgendamento(@RequestBody Agendamento agendamento) {
+    public ResponseEntity<Agendamento> atualizarAgendamento(@RequestBody Agendamento agendamento) {
         Agendamento agendamentoBD = agendamentoService.findById(agendamento.getIdAgendamento()).get();
+        try {
+            agendamentoBD.setData(agendamento.getData());
+            agendamentoBD.setHora(agendamento.getHora());
 
-        agendamentoBD.setData(agendamento.getData());
-        agendamentoBD.setHora(agendamento.getHora());
+            agendamentoBD = agendamentoService.save(agendamentoBD);
+            return ResponseEntity.status(HttpStatus.OK).body(agendamentoBD);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
 
-        agendamentoBD = agendamentoService.save(agendamentoBD);
-
-        return agendamentoBD;
     }
 
     @Autowired
