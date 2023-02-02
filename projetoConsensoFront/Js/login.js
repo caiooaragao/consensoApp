@@ -124,10 +124,13 @@ function sendDataToAPI(email, senha) {
             localStorage.setItem("idUsuario", idUsuario );
             localStorage.setItem("idTipoUsuario", idTipoUsuario );
             console.log(usuario)
+            
             if(idTipoUsuario == 1){
-                window.location.href = './visaoCliente/agendarServico.html'; 
+                
+                $("#sucessoModalCliente").modal("show");
             }else if(idTipoUsuario == 2){
-                window.location.href = './visaoPrestador/meusServicosPrestador.html';
+                
+                $("#sucessoModalPrestador").modal("show");
 
             }
 

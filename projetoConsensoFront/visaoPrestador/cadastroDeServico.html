@@ -27,6 +27,7 @@
           <div class="navbar-nav ms-auto">
             <a class="nav-link  opcao" id="meus-servicos" href="./meusServicosPrestador.html">Meus Serviços</a>
             <a class="nav-link text-light opcao " id="minha-agenda" href="./minhaAgenda.html">Minha Agenda</a>
+            <a class="nav-link text-light opcao " onclick="logOff()" id="minha-agenda" href="#">Sair</a>
 
           </div>
         </div>
@@ -70,6 +71,27 @@
       </form>
     </div>
 
+    <div id="sucessoModal1">
+      <div class="modal fade " id="sucessoModal" tabindex="-1" role="dialog" aria-labelledby="sucessoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog " role="document">
+          <div class="modal-content  bg-success text-light">
+            <div class="modal-header bg-sucess">
+              <h5 class="modal-title bg-sucess" id="sucessoModalLabel">Sucesso</h5>
+            </div>
+            <div class="modal-body bg-sucess">
+              Serviço criado com sucesso!
+            </div>
+            <div class="modal-footer bg-sucess">
+              <a type="button" class="btn btn-secondary" data-dismiss="modal"
+                href="../visaoPrestador/meusServicosPrestador.html">Fechar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </main>
 
   <footer class=" footer-item">
@@ -87,6 +109,13 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <script src="../Js/cadastroServico.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function logOff() {
+      localStorage.clear()
+      window.location.href = '/projetoConsensoFront/login.html'
+    }
+  </script>
 </body>
 
 </html>

@@ -157,13 +157,11 @@ function sendDataToAPI(nome, email, senha, tipoUsuario) {
         const content = await rawResponse.json();
         if (rawResponse.status == 201){
             
-            window.location.href = './login.html'; 
-            window.alert("cadastro realizado com sucesso!")
+            $("#sucessoModal").modal("show");
 
         }
-        else{
-            window.alert("credenciais inválidas")
-            window.location.reload()
+        if (rawResponse.status==500){
+            $("#sucessoModalInvalido").modal("show");
         }
       
         console.log(content);

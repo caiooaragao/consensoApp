@@ -81,7 +81,7 @@ async function getAgendamentosPorId() {
         if( rawResponse.status == 202){
           let divPai = document.getElementById(el)
           divPai.remove()
-          window.alert("agendamento deletado!")
+          $("#sucessoModal").modal("show");
           totalAgendamentos--
           if(totalAgendamentos == 0){ 
             document.getElementById("nenhum-agendamento").classList.remove("d-none")

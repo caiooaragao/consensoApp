@@ -2,6 +2,7 @@ package consensoProjeto.consenso.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -14,23 +15,37 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import consensoProjeto.consenso.model.Servico;
+import consensoProjeto.consenso.model.Usuario;
 import consensoProjeto.consenso.service.ServicoService;
+import consensoProjeto.consenso.service.UsuarioService;
 
 @RestController
 @CrossOrigin
 public class ServicoController {
     @PostMapping("/servico")
-    public ResponseEntity<Object> criarNovoServico(@RequestBody Servico servico) {
+    public ResponseEntity<Object> criarNovoServico(@RequestBody Servico servico,
+            @RequestHeader("idUsuario") Integer idUsuario) throws Exception {
         try {
+            Optional<Usuario> usuarioLogado = usuarioService.findById(idUsuario);
+            if (!usuarioLogado.isPresent()) {
+                throw new Exception("usuario nao logado");
+            }
+            if (usuarioLogado.get().getTipoUsuario().getIdTipoUsuario() != 2) {
+                throw new Exception("não autorizado");
+
+            }
             Servico savedServico = servicoService.save(servico);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedServico);
         } catch (DataAccessException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao criar novo serviço");
-        } // corrigido
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
 
     }
 
@@ -56,7 +71,7 @@ public class ServicoController {
     @GetMapping("/servico/usuario/{id}")
     public ResponseEntity<List<Servico>> listadeServicosPorID(@PathVariable Integer id) {
         try {
-            List<Servico> testeServicoDB = servicoService.findServicoByusuarioPrestadorIdUsuario(id);
+            List<Servico> testeServicoDB = servicoService.findByUsuarioPrestadorIdUsuario(id);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(testeServicoDB);
         } catch (Exception e) {
             // TODO: handle exception
@@ -89,5 +104,8 @@ public class ServicoController {
 
     @Autowired
     private ServicoService servicoService;
+
+    @Autowired
+    private UsuarioService usuarioService;
 
 }
