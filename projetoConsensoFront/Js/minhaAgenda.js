@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function getAgendamentosPorId() {
     try {
-        const rawResponse = await fetch(`http://localhost:8080/agendamento/usuario/${idUsuario}`, {
+        const rawResponse = await fetch(`http://localhost:8080/agendamento/usuarioprestador/${idUsuario}`, {
           method: 'GET',
           headers: {
             'Accept': 'application/json',

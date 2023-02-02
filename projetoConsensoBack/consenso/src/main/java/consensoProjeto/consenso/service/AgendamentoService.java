@@ -9,4 +9,6 @@ import consensoProjeto.consenso.model.Agendamento;
 public interface AgendamentoService extends JpaRepository<Agendamento, Integer> {
 
     List<Agendamento> findByUsuarioIdUsuario(Integer idusuario);
+
+    List<Agendamento> findByServicoUsuarioPrestadorIdUsuario(Integer idusuario);
 }
