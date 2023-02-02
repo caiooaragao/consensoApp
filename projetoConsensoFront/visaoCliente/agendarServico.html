@@ -29,6 +29,7 @@
               Serviço</a>
             <a id="meus-agendamentos" class="nav-link text-light opcao " href="../visaoCliente/meusServicos.html">Meus
               Agendamentos</a>
+            <a onclick="logOut()" href="#" id="agendar-servico" class="nav-link text-light opcao ">Sair</a>
 
           </div>
         </div>
@@ -85,7 +86,7 @@
 
   </main>
 
-  <footer class=" footer-item " >
+  <footer class=" footer-item ">
     <div>
       <img src="../img/Consenso_Marca_7.png" alt="" class="img-footer">
     </div>
@@ -100,6 +101,12 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <script src="../Js/agendarServico.js"></script>
+  <script>
+    function logOut() {
+      localStorage.clear();
+      window.location.href = "../login.html";
+    }
+  </script>
 </body>
 
 </html>
