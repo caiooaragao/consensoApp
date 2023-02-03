@@ -9,7 +9,7 @@ import consensoProjeto.consenso.model.Servico;
 
 public interface ServicoService extends JpaRepository<Servico, Integer> {
 
-    List<Servico> findServicoByusuarioPrestadorIdUsuario(Integer idusuario);
+    List<Servico> findByUsuarioPrestadorIdUsuario(Integer idusuario);
 
     Optional<Servico> findByIdServico(Integer id);
 }

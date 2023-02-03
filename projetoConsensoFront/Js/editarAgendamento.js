@@ -37,7 +37,7 @@ botao.addEventListener("click", function(event){
 
       sendDataToAPI(idAgendamentoAgora, formattedDate, hora, idUsuario, selectedValue)
       
-      
+      event.preventDefault()
 
     }
 
@@ -82,8 +82,8 @@ async function sendDataToAPI(idAgendamentoAgora ,formattedDate, hora, idUsuario,
         body: JSON.stringify({idAgendamento:idAgendamentoAgora ,data:formattedDate, hora:hora, usuario:{idUsuario:idUsuario}, servico:{idServico:selectedValue} })
       });
       const content = await rawResponse.json();
-      if(rawResponse.status == 202){
-        window.alert("agendamento editado com sucesso!")
+      if(rawResponse.status == 200){
+        $("#sucessoModal").modal("show");
       }
 
       console.log(content);

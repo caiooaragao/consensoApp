@@ -65,8 +65,7 @@ async function sendDataToAPI(selectedValue ,nomeServico, descricaoServico) {
       });
       console.log(rawResponse.status)
       if(rawResponse.status == 202){
-        window.alert("servico editado com sucesso!")
-        window.location.reload()
+        $("#sucessoModal").modal("show");
       }
 
     }catch (error) {

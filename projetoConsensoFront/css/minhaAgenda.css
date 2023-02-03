@@ -36,6 +36,13 @@
     line-height: 2;
 
 }
+#sair{
+    color: white;
+    height: 60px;
+    font-weight: 700 ;
+    line-height: 2;   
+
+}
 
 .card-title {
     font-weight: 300;

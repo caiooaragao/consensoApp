@@ -60,8 +60,7 @@ async function sendDataToAPI(data, hora, idUsuario,selectedValue) {
       });
       const content = await rawResponse.json();
       if(rawResponse.status == 201){
-        window.alert("agendamento criado com sucesso!")
-        window.location.reload()
+        $("#sucessoModal").modal("show");
       }
     
       console.log(content);

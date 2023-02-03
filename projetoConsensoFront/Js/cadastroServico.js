@@ -20,6 +20,7 @@ async function sendDataToAPI(nome, descricao, idUsuario) {
       const rawResponse = await fetch('http://localhost:8080/servico', {
         method: 'POST',
         headers: {
+          'idUsuario':idUsuario,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
@@ -28,8 +29,8 @@ async function sendDataToAPI(nome, descricao, idUsuario) {
       const content = await rawResponse.json();
       console.log(rawResponse)
       if(rawResponse.status == 201){
-        window.alert("servico criado com sucesso!")
-        location.reload()
+        $("#sucessoModal").modal("show");
+        
       }
     
       console.log(content);

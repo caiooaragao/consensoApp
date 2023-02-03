@@ -86,7 +86,7 @@ async function getServicosPorId() {
           console.log(el)   
           
           divpai.remove()
-          window.alert("Serviço deletado!")
+          $("#sucessoModal").modal("show");
           totalAgendamentos--
           if(totalAgendamentos == 0){ 
             document.getElementById("nenhum-agendamento").classList.remove("d-none")
@@ -94,6 +94,9 @@ async function getServicosPorId() {
             text.classList.add("d-none")
 
           }
+        }
+        if(rawResponse.status == 400){
+          $("#falhaModal").modal("show");
         }
         
     } catch (error) {

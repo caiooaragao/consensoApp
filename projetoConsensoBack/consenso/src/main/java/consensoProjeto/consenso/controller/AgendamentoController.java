@@ -42,6 +42,11 @@ public class AgendamentoController {
         return agendamentoService.findByUsuarioIdUsuario(idusuario);
     }
 
+    @GetMapping("/agendamento/usuarioprestador/{id}")
+    public List<Agendamento> obterTodosAgendamentosDoUsuarioPrestador(@PathVariable("id") Integer idusuario) {
+        return agendamentoService.findByServicoUsuarioPrestadorIdUsuario(idusuario);
+    }
+
     @GetMapping("/agendamento/{id}")
     public ResponseEntity<Agendamento> agendamentoUnico(@PathVariable("id") Integer id) {
 

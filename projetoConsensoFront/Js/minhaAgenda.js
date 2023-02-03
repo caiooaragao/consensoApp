@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function getAgendamentosPorId() {
     try {
-        const rawResponse = await fetch(`http://localhost:8080/agendamento/usuario/${idUsuario}`, {
+        const rawResponse = await fetch(`http://localhost:8080/agendamento/usuarioprestador/${idUsuario}`, {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
@@ -81,7 +81,7 @@ async function getAgendamentosPorId() {
         if( rawResponse.status == 202){
           let divPai = document.getElementById(el)
           divPai.remove()
-          window.alert("agendamento deletado!")
+          $("#sucessoModal").modal("show");
           totalAgendamentos--
           if(totalAgendamentos == 0){ 
             document.getElementById("nenhum-agendamento").classList.remove("d-none")

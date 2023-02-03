@@ -71,6 +71,38 @@
             <p class="mt-5 mb-3 text-muted">Consenso - 2023</p>
         </form>
     </main>
+    <div class="modal fade " id="sucessoModal" tabindex="-1" role="dialog" aria-labelledby="sucessoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog bg-sucess" role="document">
+            <div class="modal-content  bg-success text-light">
+                <div class="modal-header bg-sucess">
+                    <h5 class="modal-title bg-sucess" id="sucessoModalLabel">Sucesso</h5>
+                </div>
+                <div class="modal-body bg-sucess">
+                    Usuario cadastrado com sucesso!
+                </div>
+                <div class="modal-footer bg-sucess">
+                    <a type="button" class="btn btn-secondary" data-dismiss="modal" href="./login.html">Fechar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade " id="sucessoModalInvalido" tabindex="-1" role="dialog" aria-labelledby="sucessoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog bg-sucess" role="document">
+            <div class="modal-content  bg-danger text-light">
+                <div class="modal-header bg-sucess">
+                    <h5 class="modal-title bg-sucess" id="sucessoModalLabel">Erro</h5>
+                </div>
+                <div class="modal-body bg-sucess">
+                    Credenciais inválidas!
+                </div>
+                <div class="modal-footer bg-sucess">
+                    <a type="button" class="btn btn-secondary" data-dismiss="modal" href="./cadastro.html">Fechar</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class=" footer-item">
         <div>
             <img src="./img/Consenso_Marca_7.png" alt="" class="img-footer">
@@ -88,6 +120,7 @@
 
 
     <script src="./Js/cadastro.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </body>
 

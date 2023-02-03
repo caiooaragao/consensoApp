@@ -29,8 +29,7 @@
               Serviço</a>
             <a id="meus-agendamentos" class="nav-link text-light opcao " href="../visaoCliente/meusServicos.html">Meus
               Agendamentos</a>
-            <a onclick="logOut()" href="#" id="agendar-servico" class="nav-link text-light opcao ">Sair</a>
-
+            <a class="nav-link text-light opcao " onclick="logOff()" id="sair" href="#">Sair</a>
           </div>
         </div>
       </div>
@@ -66,12 +65,12 @@
           <div class="row">
             <div class="col-8">
               <input type="date" id="data" name="data" class="select-class text-center">
-              <p class="text-danger text-center d-none" id="data-invalida">Data inválida</p>
+              <p class="text-danger d-none" id="data-invalida">Data inválida</p>
 
             </div>
             <div class="col-4">
-              <input type="time" class="select-class  " name="hora" id="hora">
-              <p class="text-danger d-none text-center" id="hora-invalida">Hora inválida</p>
+              <input type="time" class="select-class text-center " name="hora" id="hora">
+              <p class="text-danger d-none" id="hora-invalida">Hora inválida</p>
 
             </div>
           </div>
@@ -85,12 +84,30 @@
     </div>
 
   </main>
+  <div id="sucessoModal1">
+    <div class="modal fade " id="sucessoModal" tabindex="-1" role="dialog" aria-labelledby="sucessoModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog  " role="document">
+        <div class="modal-content  bg-success text-light">
+          <div class="modal-header bg-sucess">
+            <h5 class="modal-title bg-sucess" id="sucessoModalLabel">Sucesso</h5>
+          </div>
+          <div class="modal-body bg-sucess">
+            Serviço agendado com sucesso!
+          </div>
+          <div class="modal-footer bg-sucess">
+            <a type="button" class="btn btn-secondary" data-dismiss="modal" href="./agendarServico.html">Fechar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <footer class=" footer-item ">
+  <footer class=" footer-item">
     <div>
       <img src="../img/Consenso_Marca_7.png" alt="" class="img-footer">
     </div>
-    <div class="">
+    <div>
       <p class="texto-footer">Projeto Consenso 2023
       </p>
       <p class="texto-footer">Agendapp &copy Treina Recife</p>
@@ -101,10 +118,11 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <script src="../Js/agendarServico.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    function logOut() {
-      localStorage.clear();
-      window.location.href = "../login.html";
+    function logOff() {
+      localStorage.clear()
+      window.location.href = '/projetoConsensoFront/login.html'
     }
   </script>
 </body>
